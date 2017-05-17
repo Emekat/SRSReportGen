@@ -41,7 +41,7 @@ left join dbo.tbl_issue_info ii on i.id = ii.id
 where TransactionSourceId = 3
 and pTrnx.IssuePropertyText in 
 ('Cardholder accounts transfer','Payment from account','Cash withdrawal','Goods and services')
-and transactionSourceDate >=";
+";
 
             //filter start date
             if (!(startDate == null))
@@ -88,12 +88,12 @@ and transactionSourceDate >=";
                 cmd.Parameters.AddWithValue("@endDate", endDate);
                 cmd.Parameters.AddWithValue("@issuestatus ", status);
 
-
+                DataTable dt = new DataTable();
                 try
                 {
                     cn.Open();
                     SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                    DataTable dt = new DataTable();
+                   
                     dt.Load(dr);
 
                     cn.Close();
@@ -106,7 +106,7 @@ and transactionSourceDate >=";
 
                 }
 
-                //IssueTrackerDbContext Context
+                ls = dt.ToList<CardIssue>();
 
                 return ls;
             }
