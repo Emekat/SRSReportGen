@@ -11,6 +11,7 @@ namespace SRSReportGen.entity
 
         public DateTime DateAdded { get; set; }
         public DateTime LastUpdated { get; set; }
-        public EntityStatus RecordStatus { get; set; }
+        //public EntityStatus RecordStatus { get; set; }
+        public int RecordStatus { get; set; }
     }
 }

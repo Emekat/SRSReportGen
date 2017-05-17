@@ -33,7 +33,7 @@ namespace SRSReportGen
                             PropertyInfo propertyInfo = obj.GetType().GetProperty(prop.Name);
                             propertyInfo.SetValue(obj, Convert.ChangeType(row[prop.Name], propertyInfo.PropertyType), null);
                         }
-                        catch
+                        catch(Exception ex)
                         {
                             continue;
                         }
