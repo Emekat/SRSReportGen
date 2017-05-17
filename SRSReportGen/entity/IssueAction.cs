@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SRSReportGen
+namespace SRSReportGen.entity
 {
-    class CardIssue
+    public enum IssueAction
     {
+        None = 0,
+        SMS = 1,
+        Email = 2,
+        EmailSMS = 3
     }
 }
