@@ -46,7 +46,9 @@ namespace SRSReportGen
 
         private void BothReport(DateTime startdate, DateTime enddate)
         {
-            throw new NotImplementedException();
+            BothReport(startdate, enddate);
+            CardReport(startdate, enddate);
+            MessageBox.Show("File generated successfully, check application bin\\Debug folder");
         }
 
         private void CardReport(DateTime startdate, DateTime enddate)
@@ -69,7 +71,11 @@ namespace SRSReportGen
 
         private void EchannelReport(DateTime startdate, DateTime enddate)
         {
-            ls = IssuePager3.Search3(startdate, enddate);
+            DataTable dt = IssuePager3.SearchEchannel(startdate, enddate);
+            string fle = "Transaction";
+            DataExport g = new DataExport();
+            byte[] bt = g.convertDataSetToCSV(dt, "Records");
+            File.WriteAllBytes(fle + ".csv", bt);
 
         }
     }

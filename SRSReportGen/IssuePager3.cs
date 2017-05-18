@@ -153,7 +153,7 @@ left join tbl_trnx_details_batch l10 on t.Id = l10.TrnxId and l10.FieldHead = 'T
                 DateTime sd = DateTime.Today;
                 try { sd = Convert.ToDateTime(startDate); }
                 catch { }
-                sql += " and transactionSourceDate >= @startDate ";
+                sql += " and t.dateadded >= @startDate ";
 
             }
 
@@ -163,7 +163,7 @@ left join tbl_trnx_details_batch l10 on t.Id = l10.TrnxId and l10.FieldHead = 'T
                 DateTime ed = DateTime.Today.AddDays(1);
                 try { ed = Convert.ToDateTime(endDate); ed = ed.AddDays(1); }
                 catch { }
-                sql += " and transactionSourceDate < @endDate ";
+                sql += " and  t.dateadded < @endDate ";
 
             }
 
